@@ -75,7 +75,7 @@ function login()
 			loadXMLDoc('login.php','main_content');
 		}
 		else{
-			alert("Not Logged In");
+			alert("Login Failed");
 		}
 	});
 	
@@ -242,6 +242,19 @@ function post_comment()
 	function(data,status){
 		//alert(status);
 		loadXMLDoc('post_problem.php','main_content');
+	});
+}
+
+function solve(probid)
+{
+	//alert(probid);
+	$.post("solution.php",
+	{
+    probid:probid,
+    },
+	function(data,status){
+		//alert(status);
+		document.getElementById('main_content').innerHTML=data;
 	});
 }
 
